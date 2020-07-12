@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">FacebookSnapshotSample</string>
+    <string name="app_name">Facebook Screenshot Sample</string>
     <string name="action_settings">Settings</string>
-    <string name="some_text">Some Text to be verified</string>
 </resources>

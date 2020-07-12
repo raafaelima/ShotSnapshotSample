@@ -11,7 +11,7 @@ class MainActivityTest {
     var activityTestRule = ActivityTestRule(MainActivity::class.java, false, false)
 
     @Test
-    fun shouldLoadWithExpectedContent() {
+    fun shouldLoadListWithExpectedContent() {
         val activity = activityTestRule.launchActivity(null)
         Screenshot.snapActivity(activity).record()
     }

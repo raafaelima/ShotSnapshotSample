@@ -6,6 +6,8 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,25 +16,25 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
 
-        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = CustomAdapter(buildExpectedItems())
+
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
+    private fun buildExpectedItems(): List<Pair<Int, String>> = listOf(
+        R.drawable.ic_dead to "Deadpool",
+        R.drawable.ic_hammer to "Hammer",
+        R.drawable.ic_logan to "Logan",
+        R.drawable.ic_spider to "Spider",
+        R.drawable.ic_some to "Some"
+    )
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
+    private fun buildDifferentItemsToFail(): List<Pair<Int, String>> = listOf(
+        R.drawable.ic_some to "Some",
+        R.drawable.ic_dead to "Deadpool",
+        R.drawable.ic_logan to "Logan",
+        R.drawable.ic_hammer to "Hammer",
+        R.drawable.ic_spider to "Spider"
+    )
 }
