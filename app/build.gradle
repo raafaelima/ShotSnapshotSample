@@ -1,20 +1,19 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.facebook.testing.screenshot'
+apply plugin: 'shot'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.0"
+    compileSdkVersion 31
 
     defaultConfig {
         applicationId "com.soutoss.facebooksnapshotsample"
-        minSdkVersion 19
-        targetSdkVersion 30
+        minSdkVersion 29
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "com.soutoss.facebooksnapshotsample.ScreenshotTestRunner"
+        testInstrumentationRunner "com.karumi.shot.ShotTestRunner"
     }
 
     buildTypes {
@@ -29,6 +28,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    packagingOptions {
+        exclude 'META-INF/*'
     }
 }
 
@@ -48,8 +51,4 @@ dependencies {
     androidTestImplementation 'androidx.test:core:1.2.0'
 
     androidTestImplementation 'androidx.test:rules:1.2.0'
-}
-
-screenshots {
-    multipleDevices true
 }
